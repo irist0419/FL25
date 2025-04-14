@@ -7,6 +7,7 @@ public class CursorControllerComplex : MonoBehaviour
     [SerializeField] private Texture2D cursorTextureDefault;
     [SerializeField] private Texture2D cursorTextureQuestion;
     [SerializeField] private Texture2D cursorTextureSpeech;
+    [SerializeField] private Texture2D cursorTextureAttack;
     
     [SerializeField] private Vector2 clickPosition = Vector2.zero;
     
@@ -43,6 +44,9 @@ public class CursorControllerComplex : MonoBehaviour
             case ModeOfCursor.Speech:
                 Cursor.SetCursor(cursorTextureSpeech, clickPosition, CursorMode.Auto);
                 break;
+            case ModeOfCursor.Attack:
+                Cursor.SetCursor(cursorTextureAttack, clickPosition, CursorMode.Auto);
+                break;
             default:
                 Cursor.SetCursor(cursorTextureDefault, clickPosition, CursorMode.Auto);
                 break;
@@ -52,7 +56,8 @@ public class CursorControllerComplex : MonoBehaviour
     {
         Default,
         Question,
-        Speech
+        Speech,
+        Attack
     }
 
 }

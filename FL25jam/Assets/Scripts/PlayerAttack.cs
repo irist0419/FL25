@@ -1,13 +1,19 @@
+using System;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    [SerializeField] private float attackRange = 2f;  // The range at which the player can attack
+    [SerializeField] private float attackRange = 3f;  // The range at which the player can attack
     [SerializeField] private int attackDamage = 1;     // The damage the player does
     [SerializeField] private float attackCooldown = 1f; // Cooldown between attacks
     [SerializeField] private LayerMask enemyLayer;
     private float attackCooldownTimer = 0f;
-    
+    public static bool hasAttacked;
+
+    private void Start()
+    {
+        hasAttacked = false;
+    }
 
     void Update()
     {
@@ -18,7 +24,7 @@ public class PlayerAttack : MonoBehaviour
             // Get the mouse position in world coordinates
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             
-            // Cast a ray directly at the mouse position (same as NPCcontrol)
+            // Cast a ray directly at the mouse position
             RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
             
             if (hit.collider != null)
@@ -26,22 +32,39 @@ public class PlayerAttack : MonoBehaviour
                 // Check if we hit an enemy
                 if (hit.collider.CompareTag("Enemy"))
                 {
-                    if (attackCooldownTimer <= 0f)
+                    // Check if the enemy is within attack range
+                    float distanceToEnemy = Vector2.Distance(transform.position, hit.collider.transform.position);
+                    
+                    if (distanceToEnemy <= attackRange)
                     {
-                        // If we're off cooldown, process the attack
-                        Debug.Log("Enemy hit at: " + hit.point);
-                        EnemyHealth enemyHealth = hit.collider.GetComponent<EnemyHealth>();
-                        if (enemyHealth != null)
+                        CursorControllerComplex.Instance.SetToMode(CursorControllerComplex.ModeOfCursor.Attack);
+                        
+                        if (attackCooldownTimer <= 0f)
                         {
-                            enemyHealth.TakeDamage(attackDamage);
+                            // If we're off cooldown and within range, process the attack
+                            Debug.Log("Enemy hit at: " + hit.point + " | Distance: " + distanceToEnemy);
+                            EnemyHealth enemyHealth = hit.collider.GetComponent<EnemyHealth>();
+                            if (enemyHealth != null)
+                            {
+                                enemyHealth.TakeDamage(attackDamage);
+                                hasAttacked = true;
+                            }
+                            attackCooldownTimer = attackCooldown;  // Reset cooldown after attack
                         }
-                        attackCooldownTimer = attackCooldown;  // Reset cooldown after attack
+                    }
+                    else
+                    {
+                        CursorControllerComplex.Instance.SetToMode(CursorControllerComplex.ModeOfCursor.Default);
                     }
                 }
             }
-            
-            // Debug visualization
-            Debug.DrawRay(mousePos, Vector3.forward, Color.red, 1f);
         }
+    }
+
+    // Optional: visualize the attack range in the editor
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 }
