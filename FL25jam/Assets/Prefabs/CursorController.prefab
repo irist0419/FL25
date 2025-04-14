@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &784485457373126982
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4156103057026759653}
+  - component: {fileID: 5324886584196182281}
+  - component: {fileID: 1923970995295412301}
+  m_Layer: 0
+  m_Name: CursorController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4156103057026759653
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784485457373126982}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.7286648, y: 2.1316876, z: 0.08103658}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5324886584196182281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784485457373126982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a774c92e066fc844085c309630325b45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorTextureDefault: {fileID: 2800000, guid: 9df7c28f53e6b1b4c86bbe2765d6d049, type: 3}
+  cursorTextureQuestion: {fileID: 2800000, guid: 5be239c367e70cb419b03b1bb0500345, type: 3}
+  cursorTextureSpeech: {fileID: 2800000, guid: cc5aa489282754146b6decd3d7faab16, type: 3}
+  cursorTextureAttack: {fileID: 2800000, guid: c657cc4a3e3c9694e80d59bccefc0ffd, type: 3}
+  clickPosition: {x: 0, y: 0}
+--- !u!114 &1923970995295412301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784485457373126982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 359e2853152706044a5dae4752ff6bf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorTextureDefault: {fileID: 2800000, guid: 9df7c28f53e6b1b4c86bbe2765d6d049, type: 3}
+  clickPosition: {x: 0, y: 0}
