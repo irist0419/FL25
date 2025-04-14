@@ -14,7 +14,7 @@ public class HeartHealth : MonoBehaviour
     [SerializeField] private Sprite halfHeart;
     [SerializeField] private Sprite emptyHeart;
 
-    private List<Image> hearts = new List<Image>();
+    public List<Image> hearts = new List<Image>();
 
     void Start()
     {
@@ -46,19 +46,27 @@ public class HeartHealth : MonoBehaviour
     {
         for (int i = 0; i < hearts.Count; i++)
         {
-            int heartHealth = (currentHealth - (i * 2));
-            if (heartHealth >= 2)
-                hearts[i].sprite = fullHeart;
-            else if (heartHealth == 1)
-                hearts[i].sprite = halfHeart;
-            else
-                hearts[i].sprite = emptyHeart;
+            int heartValue = Mathf.Clamp(currentHealth - (i * 2), 0, 2);
+
+            switch (heartValue)
+            {
+                case 2:
+                    hearts[i].sprite = fullHeart;
+                    break;
+                case 1:
+                    hearts[i].sprite = halfHeart;
+                    break;
+                default:
+                    hearts[i].sprite = emptyHeart;
+                    break;
+            }
         }
     }
 
     public void TakeDamage(int amount)
     {
         currentHealth = Mathf.Clamp(currentHealth - amount, 0, maxHealth);
+        //Debug.Log("Took damage: " + amount + ", currentHealth: " + currentHealth);
         UpdateHearts();
     }
 
@@ -68,14 +76,4 @@ public class HeartHealth : MonoBehaviour
         UpdateHearts();
     }
     
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            TakeDamage(1); 
-        }
-
-        if (Input.GetKeyDown(KeyCode.H)) {
-            Heal(1);
-        }
-    }
 }
