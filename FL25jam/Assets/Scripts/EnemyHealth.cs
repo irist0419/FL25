@@ -1,8 +1,11 @@
 using UnityEngine;
 
 using System.Collections;
+using System.Collections.Generic;
 public class EnemyHealth : MonoBehaviour
 {
+    public AudioSource deathsound;
+
     [SerializeField] private int maxHealth = 10;  // Maximum health of the enemy
     private int currentHealth;
     
@@ -27,11 +30,21 @@ public class EnemyHealth : MonoBehaviour
         if (spriteRenderer != null)
         {
             StartCoroutine(FlashRed());
+            // death sound
+            //deathsound.enabled = true;
+            //deathsound.Play();
         }
 
         if (currentHealth <= 0)
         {
             Die();
+
+            if (deathsound != null)
+            {
+                // death sound
+                deathsound.enabled = true;
+                deathsound.Play();
+            }
         }
     }
     
@@ -46,6 +59,7 @@ public class EnemyHealth : MonoBehaviour
     {
         // Handle enemy death
         Debug.Log(gameObject.name + " has died!");
-        Destroy(gameObject);  // Destroy the enemy object
+        float delay = deathsound != null ? deathsound.clip.length : 0.5f;
+        Destroy(gameObject, delay);  // Destroy the enemy object
     }
 }
