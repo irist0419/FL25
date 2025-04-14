@@ -8,9 +8,12 @@ public class CharaterController : MonoBehaviour
     [SerializeField] private float speed = 5.0f;
     private Rigidbody2D rb;
     private Vector2 input;
+    private SpriteRenderer spriteRenderer;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        
     }
 
     // Update is called once per frame
@@ -18,6 +21,11 @@ public class CharaterController : MonoBehaviour
     {
         input.x = Input.GetAxisRaw("Horizontal");
         input.y = Input.GetAxisRaw("Vertical");
+        if (input.x < 0)
+            spriteRenderer.flipX = true;
+        else if (input.x > 0)
+            spriteRenderer.flipX = false;
+        
         
         input.Normalize();
     }

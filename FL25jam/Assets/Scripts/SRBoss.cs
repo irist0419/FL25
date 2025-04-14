@@ -21,10 +21,12 @@ public class SRBoss: MonoBehaviour
     private Rigidbody2D erb;
     private Transform player;
     private HeartHealth heartHealth;
+    private SpriteRenderer spriteRenderer;
     
     void Start()
     {
         erb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         
         if (player != null)
@@ -95,11 +97,17 @@ public class SRBoss: MonoBehaviour
     void FixedUpdate()
     {
         if (player == null) return;
+        
 
         float distance = Vector2.Distance(transform.position, player.position);
+        
         if (distance > attackRange)
         {
             Vector2 direction = (player.position - transform.position).normalized;
+            if (direction.x < 0)
+                spriteRenderer.flipX = true;
+            else if (direction.x > 0)
+                spriteRenderer.flipX = false;
             erb.MovePosition(erb.position + direction * moveSpeed * Time.fixedDeltaTime);
         }
     }

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 32005428b4f14734ba570f80d5a5ed69
+guid: b57b7a9894ef0944bad9b501f8faa28e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1075136295349468683
-    second: japanese-school_8x8-final.tileset_0
+      213: -4014778805097690788
+    second: mc_still_2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 24
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,57 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: japanese-school_8x8-final.tileset_0
+      name: mc_still_2_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 128
-        height: 440
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline:
-      - - {x: -63, y: 33}
-        - {x: 30, y: 33}
-        - {x: 30, y: 46}
-        - {x: -63, y: 46}
-      - - {x: -12, y: 45}
-        - {x: -10, y: 45}
-        - {x: -10, y: 45}
-        - {x: -12, y: 45}
-      - - {x: -11, y: 37}
-        - {x: 10, y: 37}
-        - {x: 10, y: 38}
-        - {x: -11, y: 38}
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5f1c0965c395411f0800000000000000
-      internalID: -1075136295349468683
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: japanese-school_8x8-final.tileset_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 352
-        width: 33
-        height: 7
+        x: 7
+        y: 5
+        width: 16
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 1, w: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 6ec33cea5244cea46922dbdc37b56c66
-      internalID: 1131376822
+      spriteID: c59826ea2f3a848c0800000000000000
+      internalID: -4014778805097690788
       vertices: []
       indices: 
       edges: []
@@ -172,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 6584f893e9acffd41aba4029d0a27d63
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -182,8 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      japanese-school_8x8-final.tileset_0: -1075136295349468683
-      japanese-school_8x8-final.tileset_1: 1131376822
+      mc_still_2_0: -4014778805097690788
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

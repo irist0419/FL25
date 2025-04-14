@@ -10,6 +10,8 @@ public class LRBoss : MonoBehaviour
     
     [SerializeField] private float moveSpeed = 2f;
     [SerializeField] private float stopDistance = 6f;
+    
+    private SpriteRenderer spriteRenderer;
 
     private float fireCooldown = 0f;
     private Rigidbody2D erb;
@@ -25,6 +27,7 @@ public class LRBoss : MonoBehaviour
     void Start()
     {
         erb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
@@ -87,6 +90,11 @@ public class LRBoss : MonoBehaviour
 
         Vector2 direction = player.position - transform.position;
         float distance = direction.magnitude;
+        
+        if (direction.x < 0)
+            spriteRenderer.flipX = true;
+        else if (direction.x > 0)
+            spriteRenderer.flipX = false;
 
         if (distance > stopDistance)
         {
