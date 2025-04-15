@@ -1,7 +1,12 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using JetBrains.Annotations;
 
 public class LRBoss : MonoBehaviour
 {
+    public AudioSource bossTheme;
+    public AudioSource ruler;
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform firePoint;
     [SerializeField] private float fireRate = 2f;
@@ -29,6 +34,8 @@ public class LRBoss : MonoBehaviour
         erb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        bossTheme.enabled = true;
+        bossTheme.Play();
     }
 
     void Update()
@@ -82,6 +89,8 @@ public class LRBoss : MonoBehaviour
         GameObject proj = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
         Rigidbody2D rb = proj.GetComponent<Rigidbody2D>();
         rb.linearVelocity = direction * projectileSpeed;
+        ruler.enabled = true;
+        ruler.Play();
     }
     
     void FixedUpdate()
